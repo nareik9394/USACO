@@ -15,6 +15,7 @@ class skidesign {
     // Use StringTokenizer vs. readLine/split -- lots faster
 	StringTokenizer st = new StringTokenizer(f.readLine());
 	
+	final int TOLERANCE = 17;
     int n = Integer.parseInt(st.nextToken());
 	
 	int[] hills = new int[n];
@@ -24,9 +25,26 @@ class skidesign {
 		hills[i] = Integer.parseInt(st.nextToken());
 	}
 	
-	Arrays.sort(hills);
+	int sum = Integer.MAX_VALUE;
+	for(int min = 0; min <= 100; min++){
+		int temp_sum = 0;
+		
+		for(int i = 0; i < n; i++){
+			int diff = hills[i] - min;
+			
+			if(diff > TOLERANCE){
+				diff -= TOLERANCE;
+				temp_sum += diff * diff;
+			} else if(diff < 0){
+				temp_sum += diff * diff;
+			}
+		}
+		
+		sum = Math.min(sum, temp_sum);
+	}
 	
-	out.println();
+	
+	out.println(sum);
 	
 	f.close();
     out.close();                                  // close the output file
