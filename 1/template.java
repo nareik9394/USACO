@@ -14,9 +14,6 @@ class ride {
     PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ride.out")));
     // Use StringTokenizer vs. readLine/split -- lots faster
 	
-    //String comet = (new StringTokenizer(f.readLine())).nextToken();
-	//String group = (new StringTokenizer(f.readLine())).nextToken();
-	
 	out.println();
 	
 	f.close();
